@@ -1,11 +1,15 @@
 <main ng-init="bc.populate()" class="blog">
-  <section>
-    <blog-full-view-directive ng-repeat="entry in bc.entries" entry="entry"></blog-full-view-directive>
+  <section ng-show="!bc.list">
+    <blog-full-view-directive ng-repeat="entry in bc.entries" entry="entry" ng-click="bc.list = !bc.list" class="mobile-full"></blog-full-view-directive>
+  </section>
+
+  <section ng-show="bc.list">
+    <ul>
+      <blog-list-directive ng-repeat="entry in bc.entries" entry="entry" ng-click="bc.list = !bc.list" class="mobile-list"></blog-list-directive>
+    </ul>
   </section>
 
   <section>
-    <ul>
-      <blog-list-directive ng-repeat="entry in bc.entries" entry="entry"></blog-list-directive>
-    </ul>
+    <blog-full-view-directive ng-repeat="entry in bc.entries" entry="entry" class="full-full"></blog-full-view-directive>
   </section>
 </main>

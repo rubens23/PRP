@@ -18,12 +18,14 @@ module.exports = function(app) {
     this.signUp = function(user) {
       AuthService.signUp(user)
       .then(() => {
+        $location.url('/blog');
       }, ErrorService.logError('Error on Sign Up'));
     };
 
     this.logIn = function(user) {
       AuthService.logIn(user)
       .then(() => {
+        $location.url('/blog');
       }, ErrorService.logError('Error on Sign Up')
     );
     }.bind(this);

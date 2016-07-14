@@ -8,7 +8,7 @@ module.exports = function(app) {
     service.getEntries = function(cb) {
       return $http.get('/blog')
       .then((res) => {
-        service.entries = res.data;
+        service.entries = res.data.reverse();
         cb();
       }, ErrorService.logError('Error on Sign Up'));
     };
@@ -16,7 +16,7 @@ module.exports = function(app) {
     service.pushEntry = function(cb) {
       return function(res) {
         let entry = res.data;
-        service.entries.push(entry);
+        service.entries.unshift(entry);
         cb();
       };
     };

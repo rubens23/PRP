@@ -4,11 +4,15 @@
       width: 66%;
     }
 
-  blog-list-directive {
+  blog-list-directive.mobile-list {
     display: none;
   }
 
-  blog-full-view-directive {
+  blog-full-view-directive.mobile-full {
+    display: none;
+  }
+
+  blog-full-view-directive.full-full {
     display: block;
   }
 

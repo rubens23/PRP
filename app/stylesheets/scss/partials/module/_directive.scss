@@ -1,7 +1,18 @@
-blog-list-directive {
+blog-list-directive.mobile-list {
+  display: block;
+
+  li {
+    list-style: none;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+blog-full-view-directive.mobile-full {
   display: block;
 }
 
-blog-full-view-directive {
+blog-full-view-directive.full-full {
   display: none;
 }
