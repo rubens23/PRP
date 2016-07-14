@@ -8,8 +8,7 @@ const Entry = new mongoose.Schema({
   image: String,
   cost: String,
   timeline: String,
-  author: String,
-  comments: Array //Stretch for comments on blog posts
+  author: String
 });
 
 module.exports = mongoose.model('blogEntry', Entry);

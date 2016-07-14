@@ -22,5 +22,5 @@ describe('auth service tests', function() {
   });
   it('should test Getting a token', () => {
     expect(typeof authService.getToken).toBe('function');
-  }); 
+  });
 });

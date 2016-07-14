@@ -38,7 +38,7 @@ module.exports = function(app) {
         headers: {
           token: AuthService.getToken()
         },
-        url: 'blog'
+        url: '/blog'
       })
         .then(() => {
           this.entries = this.entries.map ((e) => {

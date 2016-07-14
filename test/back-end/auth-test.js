@@ -20,7 +20,7 @@ describe('unit tests', () => {
   let token;
 
   before((done) => {
-    request('localhost:3000')
+    request('localhost:8080')
     .post('/signup')
     .send({username:'test', password:'test'})
     .end((err, res) => {
@@ -84,7 +84,7 @@ describe('unit tests', () => {
     });
 
     it('should sign up a new user', (done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .post('/signup')
       .send({username:'test2', password:'test2'})
       .end((err, res) => {
@@ -97,7 +97,7 @@ describe('unit tests', () => {
     });
 
     it('should sign in a user with a token', (done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .get('/login')
       .auth('test2', 'test2')
       .end((err, res) => {
@@ -113,12 +113,12 @@ describe('unit tests', () => {
 describe('catch all test', () => {
 
   it('should give an error for unsupported routes', (done) => {
-    request('localhost:3000')
+    request('localhost:8080')
     .get('/test')
     .end((err, res) => {
       expect(err).to.not.eql(null);
       expect(res).to.have.status(404);
-      expect(res.body).to.eql({message: 'not found'});
+      expect(res.body).to.eql({message: 'Not found'});
       done();
     });
   });

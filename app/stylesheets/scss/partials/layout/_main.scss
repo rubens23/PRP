@@ -8,6 +8,35 @@ main.profile {
   text-align: center;
 }
 
+.profile-admin {
+  text-align: center;
+
+  h1 {
+    font-weight: bold;
+    color: $red;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  form {
+    text-align: center;
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+
+  button {
+    background-color: $orange;
+    color: $white;
+    font-weight: bold;
+  }
+}
+
 main.home {
   text-align: center;
 
@@ -85,8 +114,6 @@ main.admin {
 }
 
 main.blog {
-  height: 200vh;
-
   h1 {
     font-weight: bold;
     color: $red;

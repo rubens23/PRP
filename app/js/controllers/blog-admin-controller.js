@@ -23,7 +23,7 @@ module.exports = function(app) {
         headers: {
           token: AuthService.getToken()
         },
-        url: '/blog/'
+        url: '/blog'
       })
       .then(EntryService.pushEntry(() => {
         this.entries = EntryService.entries;

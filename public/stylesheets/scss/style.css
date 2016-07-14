@@ -63,6 +63,24 @@ main {
 main.profile {
   text-align: center; }
 
+.profile-admin {
+  text-align: center; }
+  .profile-admin h1 {
+    font-weight: bold;
+    color: #640D14; }
+  .profile-admin h2 {
+    font-size: 24px; }
+  .profile-admin form {
+    text-align: center; }
+    .profile-admin form h1 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: bold; }
+  .profile-admin button {
+    background-color: #ff6600;
+    color: #fbfffe;
+    font-weight: bold; }
+
 main.home {
   text-align: center; }
   main.home .flex-container {
@@ -113,30 +131,33 @@ main.admin {
   main.admin h1 {
     font-weight: bold; }
 
-main.blog {
-  height: 200vh; }
-  main.blog h1 {
-    font-weight: bold;
-    color: #640D14; }
-  main.blog h2 {
-    font-size: 24px; }
-  main.blog p {
-    font-size: 32px; }
-  main.blog form {
-    text-align: center; }
-    main.blog form h1 {
-      font-size: 24px;
-      margin: 0;
-      font-weight: bold; }
-  main.blog button {
-    background-color: #ff6600;
-    color: #fbfffe;
+main.blog h1 {
+  font-weight: bold;
+  color: #640D14; }
+
+main.blog h2 {
+  font-size: 24px; }
+
+main.blog p {
+  font-size: 32px; }
+
+main.blog form {
+  text-align: center; }
+  main.blog form h1 {
+    font-size: 24px;
+    margin: 0;
     font-weight: bold; }
-  main.blog article {
-    border: 1px solid black;
-    padding: 2vh;
-    text-align: center;
-    margin-bottom: 2vh; }
+
+main.blog button {
+  background-color: #ff6600;
+  color: #fbfffe;
+  font-weight: bold; }
+
+main.blog article {
+  border: 1px solid black;
+  padding: 2vh;
+  text-align: center;
+  margin-bottom: 2vh; }
 
 header {
   background-color: #6d676e;

@@ -1,4 +1,4 @@
-<main class="profile">
+<main class="profile" ng-init="pc.getUserProfile()">
 
   <form ng-submit="pc.getProfile(username)">
     <label>
@@ -7,8 +7,8 @@
     </label>
     <button type="submit">Search</button>
   </form>
-  
-  <img src="{{pc.profile.avatar}}" alt="{{pc.profile.name}}" height="200" width="200"/>
+
+  <img src="{{pc.profile.avatar}}" alt="{{pc.profile.name}}" height="200" width="200" ng-show="pc.loggedInUser"/>
 
   <h2>{{pc.profile.name}}</h2>
 

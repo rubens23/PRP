@@ -63,7 +63,13 @@
 	__webpack_require__(20);
 	__webpack_require__(21);
 	__webpack_require__(18);
-	module.exports = __webpack_require__(23);
+	__webpack_require__(23);
+	__webpack_require__(14);
+	__webpack_require__(15);
+	__webpack_require__(16);
+	__webpack_require__(13);
+	__webpack_require__(17);
+	module.exports = __webpack_require__(24);
 
 
 /***/ },
@@ -32758,7 +32764,7 @@
 	        headers: {
 	          token: AuthService.getToken()
 	        },
-	        url: '/blog/'
+	        url: '/blog'
 	      })
 	      .then(EntryService.pushEntry(() => {
 	        this.entries = EntryService.entries;
@@ -32818,7 +32824,7 @@
 	        headers: {
 	          token: AuthService.getToken()
 	        },
-	        url: 'blog'
+	        url: '/blog'
 	      })
 	        .then(() => {
 	          this.entries = this.entries.map ((e) => {
@@ -32884,8 +32890,15 @@
 	    this.$http = $http;
 	    this.$location = $location;
 	    this.login = $window.localStorage.token;
+	    this.loggedInUser = $window.localStorage.username;
 
 	    this.profile = {};
+
+	    this.getUserProfile = function() {
+	      ProfileService.getProfile(this.loggedInUser, () => {
+	        this.profile = ProfileService.profile
+	      });
+	    };
 
 	    this.getProfile = function(url) {
 	      ProfileService.getProfile(url, () => {

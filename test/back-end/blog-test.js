@@ -25,7 +25,7 @@ describe('Blog router tests', () => {
   describe('Catch all test', () => {
 
     it('should respond to a request to a random route with an error', (done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .get('/test')
       .end((err, res) => {
         expect(err).to.not.eql(null);
@@ -38,7 +38,7 @@ describe('Blog router tests', () => {
   describe('tests that don\'t need data', () => {
 
     before((done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .post('/signup')
       .send({username:'test', password:'test'})
       .end((err, res) => {
@@ -48,7 +48,7 @@ describe('Blog router tests', () => {
     });
 
     it('should get a list of blog entries', (done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .get('/blog/')
       .end((err, res) => {
         expect(err).to.eql(null);
@@ -59,7 +59,7 @@ describe('Blog router tests', () => {
     });
 
     it('should post a blog', (done) => {
-      request('localhost:3000')
+      request('localhost:8080')
       .post('/blog/')
       .set('token', token)
       .send(
@@ -93,7 +93,7 @@ describe('Blog router tests', () => {
 
       it('should update an entry with a PUT request', (done) => {
         testEntry.title = 'updatedByTest';
-        request('localhost:3000')
+        request('localhost:8080')
           .put('/blog/')
           .set('token', token)
           .send(testEntry)
@@ -106,7 +106,7 @@ describe('Blog router tests', () => {
       });
 
       it('should delete an entry', (done) => {
-        request('localhost:3000')
+        request('localhost:8080')
         .delete(`/blog/${testEntry._id}`)
         .set('token', token)
         .end((err, res) => {
