@@ -50,6 +50,7 @@ describe('Blog router tests', () => {
     it('should get a list of blog entries', (done) => {
       request('localhost:8080')
       .get('/blog/')
+      .set('token', token)
       .end((err, res) => {
         expect(err).to.eql(null);
         expect(res).to.have.status(200);

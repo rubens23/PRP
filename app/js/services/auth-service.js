@@ -6,7 +6,6 @@ module.exports = function(app) {
     let username = $window.localStorage.username;
     const service = {};
 
-
     service.signUp = function(user) {
       return $http.post('/signup', user)
       .then((res) => {
