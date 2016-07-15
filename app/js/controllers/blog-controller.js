@@ -8,7 +8,6 @@ module.exports = function(app) {
     this.$location = $location;
     this.list = true;
 
-
     this.populate = function() {
       EntryService.getEntries(() => {
         this.entries = EntryService.entries;

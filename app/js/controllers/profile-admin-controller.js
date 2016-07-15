@@ -2,7 +2,7 @@
 
 
 module.exports = function(app) {
-  app.controller('ProfileAdminController', ['$http', 'AuthService', 'AdminService', 'ErrorService', function($http, AuthService, AdminService, ErrorService) {
+  app.controller('ProfileAdminController', ['$http','$location', 'AuthService', 'AdminService', 'ErrorService', function($http, $location, AuthService, AdminService, ErrorService) {
     this.$http = $http;
 
     this.admin = {};
@@ -27,6 +27,7 @@ module.exports = function(app) {
         this.admin.avatar = updatedAdmin.avatar;
         this.admin.name = updatedAdmin.name;
         this.admin.description = updatedAdmin.description;
+        $location.url('/profile');
       }),
         ErrorService.logError('Error in updating profile');
     }.bind(this);

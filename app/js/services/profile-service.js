@@ -15,9 +15,7 @@ module.exports = function(app) {
         url: '/profile'
       })
       .then((res) => {
-        console.log(profileUrl, 'profileUrl');
         service.profile = res.data;
-        console.log('profile in service', service.profile);
         cb();
       }, ErrorService.logError('Error on profile'));
     };

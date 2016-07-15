@@ -52,6 +52,7 @@
 	__webpack_require__(6);
 	__webpack_require__(10);
 	__webpack_require__(11);
+<<<<<<< HEAD
 	__webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
@@ -64,12 +65,20 @@
 	__webpack_require__(21);
 	__webpack_require__(18);
 	__webpack_require__(23);
+=======
+>>>>>>> aa71f595c06ed435fc13dc6987fa901134d7ee3e
 	__webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(13);
 	__webpack_require__(17);
-	module.exports = __webpack_require__(24);
+	__webpack_require__(24);
+	__webpack_require__(22);
+	__webpack_require__(19);
+	__webpack_require__(20);
+	__webpack_require__(21);
+	__webpack_require__(18);
+	module.exports = __webpack_require__(23);
 
 
 /***/ },
@@ -32747,16 +32756,8 @@
 	    this.$http = $http;
 	    this.$location = $location;
 
-
-	    function getDate() {
-	      let date = new Date();
-	      return (date.getMonth()+1) + ' ' + date.getDate() + ', ' + date.getFullYear();
-	    }
-
 	    this.addEntry = function(entry) {
-
-	      let date = getDate();
-	      entry.dateCreated = date;
+	      entry.author = AuthService.getUsername();
 
 	      return $http({
 	        method: 'POST',
@@ -32793,7 +32794,6 @@
 	    this.$http = $http;
 	    this.$location = $location;
 	    this.list = true;
-
 
 	    this.populate = function() {
 	      EntryService.getEntries(() => {
@@ -32845,7 +32845,7 @@
 
 
 	module.exports = function(app) {
-	  app.controller('ProfileAdminController', ['$http', 'AuthService', 'AdminService', 'ErrorService', function($http, AuthService, AdminService, ErrorService) {
+	  app.controller('ProfileAdminController', ['$http','$location', 'AuthService', 'AdminService', 'ErrorService', function($http, $location, AuthService, AdminService, ErrorService) {
 	    this.$http = $http;
 
 	    this.admin = {};
@@ -32870,6 +32870,7 @@
 	        this.admin.avatar = updatedAdmin.avatar;
 	        this.admin.name = updatedAdmin.name;
 	        this.admin.description = updatedAdmin.description;
+	        $location.url('/profile');
 	      }),
 	        ErrorService.logError('Error in updating profile');
 	    }.bind(this);
@@ -33029,12 +33030,13 @@
 	module.exports = function(app) {
 	  app.factory('AuthService', function($http, $window, $location) {
 	    let token = $window.localStorage.token;
+	    let username = $window.localStorage.username;
 	    const service = {};
 
 
 	    service.signUp = function(user) {
 	      return $http.post('/signup', user)
-	      .then((res)=> {
+	      .then((res) => {
 	        token = res.data.token;
 	        $window.localStorage.token = token;
 	        $window.localStorage.username = user.username;
@@ -33070,6 +33072,10 @@
 	      return token;
 	    };
 
+	    service.getUsername = function() {
+	      return username;
+	    };
+
 	    return service;
 	  });
 	};
@@ -33082,13 +33088,18 @@
 	'use strict';
 
 	module.exports = function(app) {
-	  app.factory('EntryService', function($http, ErrorService) {
+	  app.factory('EntryService', function($http, ErrorService, AuthService) {
 	    const service = {};
 	    service.entries = [];
 
 	    service.getEntries = function(cb) {
-	      return $http.get('/blog')
-	      .then((res) => {
+	      return $http({
+	        method: 'GET',
+	        headers: {
+	          token: AuthService.getToken()
+	        },
+	        url: '/blog'
+	      }).then((res) => {
 	        service.entries = res.data.reverse();
 	        cb();
 	      }, ErrorService.logError('Error on Sign Up'));

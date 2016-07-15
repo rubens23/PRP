@@ -3,12 +3,13 @@
 module.exports = function(app) {
   app.factory('AuthService', function($http, $window, $location) {
     let token = $window.localStorage.token;
+    let username = $window.localStorage.username;
     const service = {};
 
 
     service.signUp = function(user) {
       return $http.post('/signup', user)
-      .then((res)=> {
+      .then((res) => {
         token = res.data.token;
         $window.localStorage.token = token;
         $window.localStorage.username = user.username;
@@ -42,6 +43,10 @@ module.exports = function(app) {
 
     service.getToken = function() {
       return token;
+    };
+
+    service.getUsername = function() {
+      return username;
     };
 
     return service;

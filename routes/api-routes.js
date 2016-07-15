@@ -7,10 +7,13 @@ const jwt = require('../lib/auth-middleware');
 
 const blogRouter = express.Router();
 
-blogRouter.get('/', (req, res, next) => {
-  Entry.find({}, (err, entry) => {
+blogRouter.get('/', jwt, (req, res, next) => {
+  User.findById(req.user._id, function(err, user) {
     if (err) return next(err);
-    res.json(entry);
+    Entry.find({author: user.username}, (err, entry) => {
+      if (err) return next(err);
+      res.json(entry);
+    });
   });
 });
 

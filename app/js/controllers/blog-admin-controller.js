@@ -6,16 +6,8 @@ module.exports = function(app) {
     this.$http = $http;
     this.$location = $location;
 
-
-    function getDate() {
-      let date = new Date();
-      return (date.getMonth()+1) + ' ' + date.getDate() + ', ' + date.getFullYear();
-    }
-
     this.addEntry = function(entry) {
-
-      let date = getDate();
-      entry.dateCreated = date;
+      entry.author = AuthService.getUsername();
 
       return $http({
         method: 'POST',

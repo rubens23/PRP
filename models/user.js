@@ -9,8 +9,6 @@ const User = new mongoose.Schema({
   username: {type: String, required: true},
   password: {type: String, required: true},
   posts: {type: String, required: false},
-  following: Array,
-  favorites: Array,
   avatar: String,
   name: String,
   description: String
