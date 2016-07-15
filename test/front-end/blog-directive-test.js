@@ -53,7 +53,7 @@ describe('directive test', () => {
     let input = directive.find('input');
     let button = directive.find('button');
 
-    expect(h1Text).toBe('TitleContentUpload an ImageProjected CostGoal Completion Date');
+    expect(h1Text).toBe('TitleContentProjected CostGoal Completion Date');
     expect(input);
     expect(button);
   });

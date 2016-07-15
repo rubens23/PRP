@@ -29,6 +29,8 @@ describe('Controller Tests', () => {
 
       ac.signUp({username: 'testuser', password: 'testpassword'});
       $httpBackend.flush();
+
+      expect(typeof ac.signUp).toBe('function');
     });
 
     it('should allow a user to log in', () => {
@@ -37,6 +39,10 @@ describe('Controller Tests', () => {
 
       ac.logIn({username: 'testuser', password: 'testpassword'});
       $httpBackend.flush();
+
+      expect(typeof ac.logIn).toBe('function');
+    });
+
 
     // it('should allow a user to sign out', () => {
     //   $httpBackend.expectGET('http://localhost:8080/signout')
@@ -47,6 +53,5 @@ describe('Controller Tests', () => {
     //
     //   expect(typeof ac.signOut).toBe('function');
     // });
-    });
   });
 });

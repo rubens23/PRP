@@ -33,5 +33,8 @@ app.config(function($routeProvider){
     templateUrl: './views/partials/profile.html',
     controller: 'ProfileController',
     controllerAs: 'pc'
+  })
+  .otherwise({
+    redirectTo: '/'
   });
 });

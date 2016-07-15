@@ -13,7 +13,7 @@ module.exports = function(app) {
 
     this.getUserProfile = function() {
       ProfileService.getProfile(this.loggedInUser, () => {
-        this.profile = ProfileService.profile
+        this.profile = ProfileService.profile;
       });
     };
 

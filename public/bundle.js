@@ -52,21 +52,6 @@
 	__webpack_require__(6);
 	__webpack_require__(10);
 	__webpack_require__(11);
-<<<<<<< HEAD
-	__webpack_require__(14);
-	__webpack_require__(15);
-	__webpack_require__(16);
-	__webpack_require__(13);
-	__webpack_require__(17);
-	__webpack_require__(24);
-	__webpack_require__(22);
-	__webpack_require__(19);
-	__webpack_require__(20);
-	__webpack_require__(21);
-	__webpack_require__(18);
-	__webpack_require__(23);
-=======
->>>>>>> aa71f595c06ed435fc13dc6987fa901134d7ee3e
 	__webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
@@ -120,6 +105,9 @@
 	    templateUrl: './views/partials/profile.html',
 	    controller: 'ProfileController',
 	    controllerAs: 'pc'
+	  })
+	  .otherwise({
+	    redirectTo: '/'
 	  });
 	});
 
@@ -32897,7 +32885,7 @@
 
 	    this.getUserProfile = function() {
 	      ProfileService.getProfile(this.loggedInUser, () => {
-	        this.profile = ProfileService.profile
+	        this.profile = ProfileService.profile;
 	      });
 	    };
 
@@ -33198,9 +33186,7 @@
 	        url: '/profile'
 	      })
 	      .then((res) => {
-	        console.log(profileUrl, 'profileUrl');
 	        service.profile = res.data;
-	        console.log('profile in service', service.profile);
 	        cb();
 	      }, ErrorService.logError('Error on profile'));
 	    };

@@ -37,10 +37,10 @@ describe('Controller Tests', () => {
       expect(pac.admin).toBe('test admin');
     });
 
-    it('should update an admin profile', () => {
-      $httpBackend.expectPUT('/admin')
-      let testAdmin = {}
-        .respond(200, )
-    })
+    // it('should update an admin profile', () => {
+    //   $httpBackend.expectPUT('/admin')
+    //   let testAdmin = {}
+    //     .respond(200, )
+    // });
   });
 });
