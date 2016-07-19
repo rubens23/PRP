@@ -5,5 +5,5 @@
   <li><a href="#/blog">Blog</a></li>
   <li><a href="#/profile">Profile</a></li>
   <li><a href="#/blog-admin">Add Post</a></li>
-  <li><a ng-click="ac.signOut()">Log Out</a>
+  <li ng-show="ac.loggedIn"><a ng-click="ac.signOut()">Log Out</a>
 </ul>
