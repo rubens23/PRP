@@ -20,7 +20,7 @@ blogRouter.get('/', jwt, (req, res, next) => {
 blogRouter.post('/', bodyParser, jwt, (req, res, next) => {
   let newEntry = new Entry(req.body);
   User.findByIdAndUpdate(req.user._id,
-    {$push: {'entries': newEntry}},
+    {$push: {'posts': newEntry}},
     {safe: true, upsert: true},
     function(err, model) {
       console.log(err, model);

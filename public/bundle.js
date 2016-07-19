@@ -105,6 +105,9 @@
 	    templateUrl: './views/partials/profile.html',
 	    controller: 'ProfileController',
 	    controllerAs: 'pc'
+	  })
+	  .otherwise({
+	    redirectTo: '/'
 	  });
 	});
 
@@ -32697,16 +32700,25 @@
 	'use strict';
 
 	module.exports = function(app) {
-	  app.controller('AuthController', ['$location','AuthService','ErrorService', function($location, AuthService, ErrorService) {
+	  app.controller('AuthController', ['$location', '$window', 'AuthService','ErrorService', '$scope', function($location, $window, AuthService, ErrorService, $scope) {
 	    this.$location = $location;
+	    this.loggedIn = AuthService.getToken()
+
+	    $scope.$watch(function() {
+	      return !!AuthService.getToken();
+	    }, function(newValue, oldValue) {
+	      this.loggedIn = AuthService.getToken();
+	    }.bind(this));
 
 	    this.goHome = function() {
+	      this.loggedIn;
 	      $location.url('/');
 	    };
 
 	    this.signOut = function() {
 	      AuthService.signOut()
 	      .then(() => {
+	        this.loggedIn;
 	        $location.url('/');
 	      }, ErrorService.logError('Error on Sign Out'));
 	    };
@@ -32714,6 +32726,7 @@
 	    this.signUp = function(user) {
 	      AuthService.signUp(user)
 	      .then(() => {
+	        this.loggedIn;
 	        $location.url('/blog');
 	      }, ErrorService.logError('Error on Sign Up'));
 	    };
@@ -32721,6 +32734,7 @@
 	    this.logIn = function(user) {
 	      AuthService.logIn(user)
 	      .then(() => {
+	        this.loggedIn;
 	        $location.url('/blog');
 	      }, ErrorService.logError('Error on Sign Up')
 	    );
@@ -33018,7 +33032,6 @@
 	    let username = $window.localStorage.username;
 	    const service = {};
 
-
 	    service.signUp = function(user) {
 	      return $http.post('/signup', user)
 	      .then((res) => {
@@ -33183,9 +33196,7 @@
 	        url: '/profile'
 	      })
 	      .then((res) => {
-	        console.log(profileUrl, 'profileUrl');
 	        service.profile = res.data;
-	        console.log('profile in service', service.profile);
 	        cb();
 	      }, ErrorService.logError('Error on profile'));
 	    };
